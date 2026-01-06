@@ -1,6 +1,6 @@
 import java.math.BigDecimal;
 
-public class Transaction
+public class Transaction implements  Comparable<Transaction>
 {
    private   String id;
    private BigDecimal amount;
@@ -65,5 +65,10 @@ public class Transaction
                 ", date='" + date + '\'' +
                 ", userId='" + userId + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Transaction other) {
+        return this.amount.compareTo(other.getAmount());
     }
 }

@@ -1,6 +1,7 @@
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -65,5 +66,101 @@ public class Main {
         System.out.println("Are there any Failed Transactions? " + analyzer.checkFailedTransactions(transactions, "Failed"));
         //Latest Transaction
         System.out.println("Latest Transaction: " + analyzer.findLatestTransaction(transactions));
+
+        //Set Interface and Implementation
+        /**
+         * This is an example of how to create and use Set Interface and Implementation in Java
+         * is unordered Collection Data and duplicates are not allowed.
+         **/
+
+        List<String> list = new ArrayList<>();
+        list.add("Dog");
+        list.add("Cat");
+        list.add("Dog"); //Duplicate element
+        System.out.println("List: " + list);
+
+        Set<String> convertListToSet = new HashSet<>(list);
+
+        System.out.println("Set (after converting from List): " + convertListToSet);
+
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        Predicate<Integer> isEven = n -> n % 2 == 0;
+        //Using Stream to filter even numbers
+        Set<Integer> evenNumbers =  numbers
+                .stream()
+                .filter(isEven)
+                .collect(Collectors.toSet());
+
+        System.out.println("Even Numbers Set: " + evenNumbers);
+
+        //Tree Set Implementation
+        /**
+         * This is an example of how to create and use Tree Set Implementation in Java
+         * is ordered Collection Data in ascending order and duplicates are not allowed.
+         **/
+
+
+        Set<Integer> sortedNumbers = new TreeSet<>();
+        sortedNumbers.add(5);
+        sortedNumbers.add(2);
+        sortedNumbers.add(8);
+        sortedNumbers.add(1);
+        sortedNumbers.add(3);
+
+        System.out.println("TreeSet (Sorted Numbers): " + sortedNumbers);
+
+         //Custom Example
+        Set<Transaction> amount = new TreeSet<>(transactions);
+         System.out.println("TreeSet (Sorted Transactions by Amount): " + amount);
+
+        //Map Interface and Implementation
+        /**
+         * This is an example of how to create and use Map Interface and Implementation in Java
+         * is unordered Collection Data and stores data in key-value pairs.
+         **/
+        Map<String,Integer>  nameAgeMap  = new HashMap<>();
+        nameAgeMap.put("Alice",30);
+        nameAgeMap.put("Bob",25);
+        nameAgeMap.put("Alice",35);
+        System.out.println("Map (Name to Age): " + nameAgeMap);
+
+
+      Map<String,Integer>  numbersMap = new HashMap<>();
+      numbersMap.put("one",1) ;
+      numbersMap.put("two",2) ;
+      numbersMap.put("three",3) ;
+      numbersMap.put("four",4) ;
+      numbersMap.put("five",5) ;
+
+      System.out.println("Map (Numbers): " + numbersMap);
+      System.out.println("Key Map  :" + numbersMap.keySet());
+      System.out.println("Values Map  :" + numbersMap.values());
+      System.out.println("Entry Key Set :" + numbersMap.entrySet());
+
+    Map<String,Integer> numbersEven =   numbersMap.entrySet().stream()
+              .filter(n-> n.getValue() % 2 == 0)
+              .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+    System.out.println("Even Numbers Map  :" + numbersEven);
+
+    for (Map.Entry<String, Integer> entry : numbersMap.entrySet())
+    {
+        System.out.println("Key : " + entry.getKey() + " Value : " + entry.getValue());
     }
-}
+
+
+       enum  Size{
+           SMALL,MEDIUM,LARGE,EXTRA_LARGE
+       }
+           EnumMap<Size,Integer>    enumMap = new EnumMap<>(Size.class) ;
+              enumMap.put(Size.SMALL,1);
+              enumMap.put(Size.MEDIUM,2) ;
+              enumMap.put(Size.LARGE,3) ;
+              enumMap.put(Size.EXTRA_LARGE,4) ;
+
+                System.out.println("Enum Map : " + enumMap);
+                System.out.println("Enum Map keys : " +  enumMap.keySet());
+                System.out.println("Enum Map values : " +  enumMap.values());
+                System.out.println("Enum Map entrySet : " +  enumMap.entrySet());
+    }
+    }
