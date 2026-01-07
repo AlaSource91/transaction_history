@@ -162,5 +162,74 @@ public class Main {
                 System.out.println("Enum Map keys : " +  enumMap.keySet());
                 System.out.println("Enum Map values : " +  enumMap.values());
                 System.out.println("Enum Map entrySet : " +  enumMap.entrySet());
+                //Managing Student
+              List<String>  students = new ArrayList<>();
+              students.add("John");
+              students.add("Alice");
+              students.add("Bob");
+              students.add("Diana");
+              for (String student : students)
+              {
+                  System.out.println("Student Name :   " + student);
+              }
+
+              //Remove Duplicate Student Name Using Set
+            Set<String>  uniqueStudent = new HashSet<>(students);
+            System.out.println("Unique Student Names : " + uniqueStudent);
+            Set<String> tags  = new HashSet<>();
+            tags.add("Java");
+            tags.add("Programming");
+            tags.add("Collections");
+            if (tags.contains("Paython"))
+            {
+                System.out.println("Tag Found");
+            } else {
+                System.out.println("Tag Not Found");
+            }
+            //Student Grades with Map
+
+          Map<String,Integer>  gradeMap = new HashMap<>();
+          gradeMap.put("John",85);
+          gradeMap.put("Alice",90);
+          gradeMap.put("Bob",78);
+          gradeMap.put("Diana",92);
+
+          for (Map.Entry<String,Integer>  entry : gradeMap.entrySet())
+          {
+              System.out.println("Student: " + entry.getKey() + ", Grade: " + entry.getValue());
+          }
+
+          double avg = gradeMap.values()
+                  .stream()
+                  .mapToDouble( Integer::doubleValue)
+                  .average()
+                  .getAsDouble();
+        System.out.println("Average Grade: " + avg);
+
+        PriorityQueue<Task>    tasks = new PriorityQueue<>();
+        tasks.add(new Task("Task 1",2));
+        tasks.add(new Task("Task 2",1));
+        tasks.add(new Task("Task 3",3));
+
+        while (!tasks.isEmpty()) {
+            System.out.println("Processing " + tasks.poll());
+
+        }
+
+        Map<String,String>   linkMap = new LinkedHashMap<>();
+        linkMap.put("Google","https://www.google.com");
+        linkMap.put("Facebook","https://www.facebook.com");
+        linkMap.put("Twitter","https://www.twitter.com");
+        System.out.println("LinkedHashMap: " + linkMap);
+        for (Map.Entry<String,String> entry : linkMap.entrySet()){
+
+              System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
+        }
+
+
+
     }
     }
+
+
+
